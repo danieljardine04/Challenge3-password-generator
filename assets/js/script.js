@@ -15,10 +15,12 @@ function writePassword() {
 
 var generatePassword = function(){
   var charPrompt = window.prompt("How many characters would you like in your password? It needs to be 8 to 128 characters");
-  if(charPrompt > 128){
-     window.alert("Your Password needs to be less than 129 characters");
-     generatePassword();
-  } 
+  if(charPrompt < 128 && charPrompt > 8){
+     passwordText.length == charPrompt;
+  } else {
+    window.alert("Your Password needs to be in between 8 characters to 128 characters");
+    generatePassword();
+  }
   // I need a for loop for each character in charprompt
 }
 
