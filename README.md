@@ -10,4 +10,4 @@ A website that generates a random password.
 * JS
 
 ## Website
-https://danieljardine04.github.io/Challenge3-generator-password/
+https://danieljardine04.github.io/Challenge3-password-generator/
