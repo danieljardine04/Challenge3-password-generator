@@ -2,6 +2,8 @@
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
+var specialChars =" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+
 
 
 
@@ -14,6 +16,8 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  
+
 
 }
 
@@ -21,7 +25,7 @@ function writePassword() {
 
 var generatePassword = function(){
   var charPrompt = window.prompt("How many characters would you like in your password? It needs to be 8 to 128 characters");
-  var special = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "'\'", "]", "^", "_", "`", "{", "|", "}", "~" ];
+  
   var result = "";
   if(charPrompt <= 128 && charPrompt >= 8){
      var options = "";
@@ -41,27 +45,29 @@ var generatePassword = function(){
       options += numbers;
       console.log(options);
     }
-  var specialChars = "";
-  for(var s = 0; s < special.length; s++){
-    specialChars += s;
-    console.log(specialChars);
-  }
+  
   var confirmSpecial = window.confirm("Would you like to add special characters to your password?");
   if(confirmSpecial){
     options += specialChars;
     console.log(options);
   }
+  if(options === "" || options === null){
+    window.alert("You need to choose at least one letter type option");
+    return "";
+  }
   for(var i = 0; i < charPrompt; i++){
-    var randomLetter = Math.floor(Math.random() * options.length);
+    var randomLetter = options[Math.floor(Math.random() * options.length)];
     result += randomLetter;
   }
-  return window.alert("Your password is " + result);
+
+  return result;
   // I need a for loop for each character in charprompt
 } else {
   window.alert("Your Password needs to be in between 8 characters to 128 characters");
-  generatePassword();
+  return "";
 }
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
